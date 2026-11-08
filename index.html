@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5c644">
+  <meta name="description" content="Be Well Pharmacy — trusted community pharmacy care in Lagos since 2005. Always be in good health.">
+  <title>Be Well Pharmacy | Always be in good health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #f5c644;
+      --yellow-light: #fff7df;
+      --ink: #17251f;
+      --muted: #64716b;
+      --green: #245c48;
+      --paper: #fffefa;
+      --line: #e9ece5;
+      --shadow: 0 18px 55px rgba(27, 44, 35, .09);
+      --sans: "DM Sans", sans-serif;
+      --display: "Manrope", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+
+    .topbar { background: var(--ink); color: #fff; font-size: 12px; }
+    .topbar-inner { min-height: 38px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .topbar a { color: #f7d66d; font-weight: 700; }
+    .topbar-note { color: #d3dbd5; }
+
+    header { position: sticky; z-index: 5; top: 0; background: rgba(255,254,250,.95); border-bottom: 1px solid rgba(233,236,229,.8); backdrop-filter: blur(12px); }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; }
+    .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 14px; background: var(--yellow); color: var(--ink); }
+    .brand-name { font-family: var(--display); font-size: 19px; line-height: 1; font-weight: 800; letter-spacing: -.8px; }
+    .brand-name small { display: block; margin-top: 5px; color: var(--muted); font: 600 9px var(--sans); letter-spacing: 1.5px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: #48554e; font-size: 13px; font-weight: 600; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta, .button { min-height: 46px; display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 0 19px; border: 0; border-radius: 10px; background: var(--yellow); color: var(--ink); font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
+    .nav-cta:hover, .button:hover { transform: translateY(-2px); background: #efbd32; }
+    .menu-toggle { display: none; border: 0; background: none; color: var(--ink); font-size: 25px; cursor: pointer; }
+
+    .hero { padding: 62px 0 74px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 1.55px; text-transform: uppercase; }
+    .eyebrow:before { content: ""; width: 23px; height: 2px; background: var(--yellow); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--display); }
+    h1 { max-width: 520px; margin-bottom: 20px; font-size: clamp(42px, 5vw, 65px); line-height: 1.07; letter-spacing: -3.4px; }
+    h1 span { color: var(--green); }
+    .hero-copy { max-width: 460px; margin-bottom: 27px; color: var(--muted); font-size: 16px; line-height: 1.8; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; }
+    .button-dark { background: var(--green); color: #fff; }
+    .button-dark:hover { background: #194b39; }
+    .button-outline { border: 1px solid var(--line); background: transparent; }
+    .button-outline:hover { background: var(--yellow-light); }
+    .hero-proof { display: flex; align-items: center; gap: 12px; margin-top: 30px; color: var(--muted); font-size: 12px; }
+    .proof-icon { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: #edf5ef; color: var(--green); }
+    .proof-icon svg { width: 16px; }
+    .hero-visual { position: relative; min-height: 440px; }
+    .hero-photo { position: absolute; inset: 0 0 18px 25px; overflow: hidden; border-radius: 22px 22px 90px 22px; background: #eee8d9; }
+    .hero-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .photo-shade { position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(17,35,27,.56)); }
+    .photo-caption { position: absolute; bottom: 30px; left: 30px; color: white; }
+    .photo-caption strong { display: block; font: 700 16px var(--display); }
+    .photo-caption span { display: block; margin-top: 5px; color: #edf2eb; font-size: 12px; }
+    .floating-card { position: absolute; left: 0; bottom: 0; display: flex; align-items: center; gap: 12px; padding: 15px 19px; border: 1px solid var(--line); border-radius: 13px; background: white; box-shadow: var(--shadow); }
+    .floating-card .cross { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px; background: var(--yellow-light); color: var(--green); font-size: 23px; font-weight: 500; }
+    .floating-card strong { display: block; font: 800 17px var(--display); }
+    .floating-card span:last-child { color: var(--muted); font-size: 11px; }
+    .sun-dot { position: absolute; top: -17px; right: -17px; width: 80px; height: 80px; border: 16px solid var(--yellow-light); border-radius: 50%; z-index: -1; }
+
+    .trust-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+    .trust-items { display: grid; grid-template-columns: repeat(3, 1fr); padding: 21px 0; }
+    .trust-item { display: flex; align-items: center; justify-content: center; gap: 11px; color: var(--ink); font-size: 12px; font-weight: 700; }
+    .trust-item + .trust-item { border-left: 1px solid var(--line); }
+    .trust-item svg { width: 18px; height: 18px; color: var(--green); }
+
+    .section { padding: 88px 0; }
+    .section-heading { max-width: 570px; margin: 0 auto 34px; text-align: center; }
+    .section-heading .eyebrow { justify-content: center; }
+    h2 { margin-bottom: 13px; font-size: clamp(30px, 4vw, 42px); line-height: 1.17; letter-spacing: -1.7px; }
+    .section-heading > p:last-child { margin-bottom: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .medicine-section { background: #f8f8f3; }
+    .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 9px; margin: 0 0 27px; }
+    .tab { padding: 10px 17px; border: 1px solid #e6e9e1; border-radius: 30px; background: white; color: #55625b; font-size: 12px; font-weight: 700; cursor: pointer; transition: .2s; }
+    .tab:hover, .tab[aria-selected="true"] { border-color: var(--green); background: var(--green); color: white; }
+    .medicine-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .medicine-card { min-height: 208px; padding: 22px; border: 1px solid var(--line); border-radius: 15px; background: white; transition: transform .2s, box-shadow .2s; }
+    .medicine-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .medicine-icon { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 22px; border-radius: 12px; background: var(--yellow-light); color: var(--green); }
+    .medicine-icon svg { width: 21px; height: 21px; }
+    .medicine-card h3 { margin: 0 0 8px; font-size: 16px; letter-spacing: -.3px; }
+    .medicine-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .medicine-note { margin: 20px 0 0; color: var(--muted); text-align: center; font-size: 11px; line-height: 1.6; }
+
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 72px; }
+    .about-visual { position: relative; min-height: 360px; overflow: hidden; border-radius: 20px; background: var(--yellow-light); }
+    .about-visual img { width: 100%; height: 100%; position: absolute; object-fit: cover; }
+    .about-badge { position: absolute; right: 17px; bottom: 17px; padding: 16px 19px; border-radius: 12px; background: var(--yellow); color: var(--ink); }
+    .about-badge strong { display: block; font: 800 24px var(--display); }
+    .about-badge span { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .about-copy .eyebrow { margin-bottom: 14px; }
+    .about-copy h2 { max-width: 470px; margin-bottom: 17px; }
+    .about-copy > p { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .founder { display: flex; align-items: center; gap: 12px; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .founder-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow-light); color: var(--green); font: 700 14px var(--display); }
+    .founder strong { display: block; font-size: 13px; }
+    .founder span { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+
+    .branches-section { padding-top: 65px; background: #f8f8f3; }
+    .branch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .branch-card { padding: 23px; border: 1px solid var(--line); border-radius: 14px; background: white; }
+    .branch-pin { color: var(--green); font-size: 20px; }
+    .branch-card h3 { margin: 14px 0 7px; font-size: 17px; }
+    .branch-card p { margin: 0; color: var(--muted); font-size: 12px; }
+    .branch-address { max-width: 500px; margin: 23px auto 0; color: var(--muted); text-align: center; font-size: 12px; line-height: 1.7; }
+
+    .contact-section { padding: 68px 0; }
+    .contact-card { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 40px 45px; border-radius: 20px; background: var(--ink); color: white; }
+    .contact-card .eyebrow { color: var(--yellow); }
+    .contact-card h2 { max-width: 500px; margin-bottom: 9px; font-size: 34px; }
+    .contact-card p:last-child { margin: 0; color: #c4d0c8; font-size: 13px; }
+    .contact-actions { flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .contact-actions .button { min-width: 175px; }
+    .contact-address { color: #d5ddd7; font-size: 11px; line-height: 1.6; }
+    footer { padding: 24px 0; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; color: var(--muted); font-size: 11px; }
+    .footer-motto { color: var(--green); font-weight: 700; }
+
+    @media (max-width: 850px) {
+      .nav-links { gap: 16px; }
+      .hero-grid { gap: 30px; }
+      .hero-visual { min-height: 380px; }
+      .medicine-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { gap: 38px; }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: min(100% - 34px, 500px); }
+      .topbar-inner { min-height: 35px; font-size: 10px; }
+      .topbar-note { display: none; }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-cta { display: none; }
+      .nav-links { position: absolute; top: 68px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 20px 18px; border-bottom: 1px solid var(--line); background: var(--paper); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 0; }
+      .hero { padding: 44px 0 52px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 31px; }
+      h1 { max-width: 430px; font-size: 48px; letter-spacing: -2.6px; }
+      .hero-copy { font-size: 14px; }
+      .hero-visual { min-height: 330px; }
+      .hero-photo { left: 14px; border-bottom-right-radius: 65px; }
+      .trust-items { grid-template-columns: 1fr; gap: 15px; padding: 17px 0; }
+      .trust-item { justify-content: flex-start; }
+      .trust-item + .trust-item { border: 0; }
+      .section { padding: 65px 0; }
+      .medicine-grid { gap: 10px; }
+      .medicine-card { min-height: 190px; padding: 17px; }
+      .medicine-icon { margin-bottom: 16px; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-visual { min-height: 285px; }
+      .branch-grid { grid-template-columns: 1fr; }
+      .branches-section { padding-top: 49px; }
+      .contact-section { padding: 49px 0; }
+      .contact-card { align-items: flex-start; flex-direction: column; padding: 29px 24px; }
+      .contact-card h2 { font-size: 29px; }
+      .contact-actions { width: 100%; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="topbar-note">Here for your health, every day.</span>
+      <a href="tel:08162829836">Call us: 0816 282 9836</a>
+    </div>
+  </div>
+  <header>
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Be Well Pharmacy home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-name">Be well<small>Community pharmacy</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#medicines">Our medicines</a>
+        <a href="#about">About us</a>
+        <a href="#branches">Branches</a>
+      </div>
+      <a class="nav-cta" href="#contact">Talk to our team <span aria-hidden="true">→</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Your neighbourhood pharmacy</p>
+          <h1>Care that keeps you <span>well.</span></h1>
+          <p class="hero-copy">Good health starts with a team you can trust. Find everyday medicines and friendly pharmacy care at Be Well, serving our Lagos community since 2005.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#medicines">Explore our medicines <span aria-hidden="true">→</span></a>
+            <a class="button button-outline" href="tel:08162829836">Call 0816 282 9836</a>
+          </div>
+          <div class="hero-proof">
+            <span class="proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>Trusted local care in Lagos since 2005</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <span class="sun-dot" aria-hidden="true"></span>
+          <div class="hero-photo">
+            <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="Bright, welcoming pharmacy with shelves of health products">
+            <div class="photo-shade"></div>
+            <div class="photo-caption"><strong>A little care goes a long way.</strong><span>Always here to help you feel your best.</span></div>
+          </div>
+          <div class="floating-card">
+            <span class="cross" aria-hidden="true">+</span>
+            <span><strong>Since 2005</strong><span>Care you can count on</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip" aria-label="Our commitments">
+      <div class="wrap trust-items">
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 4.5 6v5.5c0 4.4 3.2 7.7 7.5 9.5 4.3-1.8 7.5-5.1 7.5-9.5V6L12 3Z" stroke="currentColor" stroke-width="1.8"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted community pharmacy</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-8-4.4-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.6-8 11-8 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Friendly, thoughtful care</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Serving Lagos since 2005</div>
+      </div>
+    </div>
+
+    <section class="section medicine-section" id="medicines">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Here when you need us</p>
+          <h2>Our medicines</h2>
+          <p>Browse some of the medicines our customers ask about. Our pharmacy team can help you find the right care for your needs.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Medicine categories">
+          <button class="tab" id="tab-all" type="button" role="tab" aria-selected="true" aria-controls="medicine-list" data-filter="all">All medicines</button>
+          <button class="tab" id="tab-pain" type="button" role="tab" aria-selected="false" aria-controls="medicine-list" data-filter="pain">Pain relief</button>
+          <button class="tab" id="tab-antibiotics" type="button" role="tab" aria-selected="false" aria-controls="medicine-list" data-filter="antibiotics">Antibiotics</button>
+          <button class="tab" id="tab-malaria" type="button" role="tab" aria-selected="false" aria-controls="medicine-list" data-filter="malaria">Malaria care</button>
+        </div>
+        <div class="medicine-grid" id="medicine-list" role="tabpanel" aria-labelledby="tab-all">
+          <article class="medicine-card" data-category="pain">
+            <span class="medicine-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m9 4 11 11a4.2 4.2 0 0 1-5.9 5.9L3.1 9.9A4.2 4.2 0 0 1 9 4Z" stroke="currentColor" stroke-width="1.7"/><path d="m7 13 6-6" stroke="currentColor" stroke-width="1.7"/></svg></span>
+            <h3>Paracetamol</h3><p>Everyday pain and fever relief. Ask our team for guidance.</p>
+          </article>
+          <article class="medicine-card" data-category="antibiotics">
+            <span class="medicine-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8.2 4.2a5.7 5.7 0 0 1 8.1 8.1l-4 4a5.7 5.7 0 0 1-8.1-8.1l4-4Z" stroke="currentColor" stroke-width="1.7"/><path d="m7.1 13.1 8.1-8.1" stroke="currentColor" stroke-width="1.7"/></svg></span>
+            <h3>Amoxicillin</h3><p>Antibiotic medicine supplied with appropriate guidance and prescription.</p>
+          </article>
+          <article class="medicine-card" data-category="antibiotics">
+            <span class="medicine-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8.2 4.2a5.7 5.7 0 0 1 8.1 8.1l-4 4a5.7 5.7 0 0 1-8.1-8.1l4-4Z" stroke="currentColor" stroke-width="1.7"/><path d="M6.5 14.5 14 7" stroke="currentColor" stroke-width="1.7"/></svg></span>
+            <h3>Flagin</h3><p>Speak with our pharmacy team about availability and safe use.</p>
+          </article>
+          <article class="medicine-card" data-category="malaria">
+            <span class="medicine-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <h3>Malaria medicines</h3><p>Ask us about malaria treatment options and professional advice.</p>
+          </article>
+        </div>
+        <p class="medicine-note">Prescription medicines are dispensed only in accordance with applicable requirements. Please consult a qualified health professional before taking any medicine.</p>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap about-grid">
+        <div class="about-visual">
+          <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="A selection of pharmacy and healthcare products">
+          <div class="about-badge"><strong>2005</strong><span>Founded with care</span></div>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">A little about us</p>
+          <h2>Local roots. A heart for your health.</h2>
+          <p>Be Well Pharmacy was founded in 2005 by our director, Dr. Imran Eleha. Since then, our focus has stayed simple: welcome our community, listen carefully, and help people make informed choices about their health.</p>
+          <p>Visit us in Lagos for a friendly conversation with our team. We're proud to serve our customers across our neighbourhood branches.</p>
+          <div class="founder">
+            <span class="founder-mark" aria-hidden="true">IE</span>
+            <span><strong>Dr. Imran Eleha</strong><span>Founder &amp; Director, Be Well Pharmacy</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section branches-section" id="branches">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Close to home</p>
+          <h2>Find your Be Well</h2>
+          <p>We're growing with our Lagos community. Drop by one of our branches.</p>
+        </div>
+        <div class="branch-grid">
+          <article class="branch-card"><span class="branch-pin" aria-hidden="true">⌖</span><h3>Ikeja</h3><p>Be Well Pharmacy, Ikeja, Lagos</p></article>
+          <article class="branch-card"><span class="branch-pin" aria-hidden="true">⌖</span><h3>Okoko</h3><p>Be Well Pharmacy, Okoko, Lagos</p></article>
+          <article class="branch-card"><span class="branch-pin" aria-hidden="true">⌖</span><h3>Victoria Island</h3><p>Be Well Pharmacy, VI, Lagos</p></article>
+        </div>
+        <p class="branch-address">Main address: P.O. Box 253, Valentina Street, Ibiye, Lagos. Call us for branch directions and current opening hours.</p>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <div>
+            <p class="eyebrow">We're happy to help</p>
+            <h2>Let's talk about your health.</h2>
+            <p>Have a question? Give our pharmacy team a call.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="button" href="tel:08162829836">Call 0816 282 9836 <span aria-hidden="true">→</span></a>
+            <span class="contact-address">P.O. Box 253, Valentina Street<br>Ibiye, Lagos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <a class="brand" href="#home">
+        <span class="brand-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>
+        <span class="brand-name">Be well<small>Community pharmacy</small></span>
+      </a>
+      <span class="footer-motto">Always be in good health.</span>
+      <span>© <span id="year"></span> Be Well Pharmacy</span>
+    </div>
+  </footer>
+  <script>
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const medicineCards = Array.from(document.querySelectorAll(".medicine-card"));
+    const medicineList = document.querySelector("#medicine-list");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const category = tab.dataset.filter;
+        tabs.forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+        medicineList.setAttribute("aria-labelledby", tab.id);
+        medicineCards.forEach((card) => {
+          card.hidden = category !== "all" && card.dataset.category !== category;
+        });
+      });
+    });
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".nav-links");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+      navigation.classList.toggle("open", !isOpen);
+    });
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navigation.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
